@@ -5,30 +5,30 @@
     android:layout_height="?android:attr/listPreferredItemHeight"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
 
     <TextView
         android:id="@+id/symbol"
         style="@style/StockSymbolTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="left|center_vertical"
-        tools:text="GOOG" />
+        android:gravity="start|center_vertical"
+        tools:text="@string/symbol_ph_text" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="right">
+        android:gravity="end">
 
         <TextView
             android:id="@+id/price"
             style="@style/BidPriceTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10sp"
-            tools:text="1000.00" />
+            android:layout_marginEnd="10sp"
+            tools:text="@string/price_ph_text" />
 
         <TextView
             android:id="@+id/change"
@@ -36,8 +36,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/percent_change_pill_green"
-            android:paddingLeft="3dp"
-            android:paddingRight="3dp"
-            tools:text="100%" />
+            android:paddingStart="3dp"
+            android:paddingEnd="3dp"
+            tools:text="@string/change_ph_text" />
     </LinearLayout>
 </LinearLayout>
