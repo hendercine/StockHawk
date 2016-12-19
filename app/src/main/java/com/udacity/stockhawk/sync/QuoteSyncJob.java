@@ -8,7 +8,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Handler;
+import android.support.design.widget.TabLayout;
+import android.widget.Toast;
 
+import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.data.PrefUtils;
 
@@ -28,6 +32,8 @@ import yahoofinance.histquotes.HistoricalQuote;
 import yahoofinance.histquotes.Interval;
 import yahoofinance.quotes.stock.StockQuote;
 
+import static android.os.Looper.getMainLooper;
+
 public final class QuoteSyncJob {
 
     static final int ONE_OFF_ID = 2;
@@ -36,7 +42,7 @@ public final class QuoteSyncJob {
     private static final int INITIAL_BACKOFF = 10000;
     private static final int PERIODIC_ID = 1;
 
-    static void getQuotes(Context context) {
+    static void getQuotes(final Context context) {
 
         Timber.d("Running sync job");
 
@@ -78,7 +84,15 @@ public final class QuoteSyncJob {
                     change = quote.getChange().floatValue();
                     percentChange = quote.getChangeInPercent().floatValue();
                 } catch (NullPointerException e) {
-                    e.printStackTrace();
+                    Timber.e(context.getString(R.string.no_stock_exists));
+                    // create a handler to post error message to the main thread
+                    Handler mHandler = new Handler(getMainLooper());
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(context, context.getString(R.string.no_stock_exists), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     PrefUtils.removeStock(context, symbol);
                     continue;
                 }
@@ -118,7 +132,7 @@ public final class QuoteSyncJob {
             context.sendBroadcast(dataUpdatedIntent);
 
         } catch (IOException exception) {
-            Timber.e(exception, "Error fetching stock quotes");
+            Timber.e(exception, context.getString(R.string.fecth_stock_error));
         }
     }
 
