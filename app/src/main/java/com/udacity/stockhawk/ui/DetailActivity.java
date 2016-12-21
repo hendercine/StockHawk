@@ -7,6 +7,8 @@ import com.udacity.stockhawk.R;
 
 public class DetailActivity extends AppCompatActivity {
 
+    private DetailFragment mDetailFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

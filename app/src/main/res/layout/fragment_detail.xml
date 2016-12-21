@@ -1,0 +1,173 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.udacity.stockhawk.ui.DetailFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/detail_fragment_container"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:id="@+id/detail_title_symbol_container"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:id="@+id/detail_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:text="@string/detail_title_placeholder" />
+
+            <TextView
+                android:id="@+id/detail_symbol"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:text="@string/detail_symbol_placeholder" />
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/detail_title_symbol_container"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+
+        <RelativeLayout
+            android:id="@+id/volume_price_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/chart"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:id="@+id/detail_volume_title"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="@string/volume_title" />
+
+            <TextView
+                android:id="@+id/volume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/detail_volume_title"
+                tools:text="@string/day_high_placeholder"/>
+
+            <TextView
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:id="@+id/price_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/detail_price"
+                android:text="@string/detail_price_title"/>
+
+            <TextView
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:id="@+id/detail_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                tools:text="@string/day_low_placeholder"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/detail_high_low_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/volume_price_container"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:id="@+id/day_high_title"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="@string/day_high_title" />
+
+            <TextView
+                android:id="@+id/day_high"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/day_high_title"
+                tools:text="@string/day_high_placeholder"/>
+
+            <TextView
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:id="@+id/day_low_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/day_low"
+                android:text="@string/day_low_title"/>
+
+            <TextView
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:id="@+id/day_low"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                tools:text="@string/day_low_placeholder"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/detail_year_high_low_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_high_low_container"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:id="@+id/year_high_title"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="@string/yeat_high_title" />
+
+            <TextView
+                android:id="@+id/year_high"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/year_high_title"
+                tools:text="@string/day_high_placeholder"/>
+
+            <TextView
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:id="@+id/year_low_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/year_low"
+                android:text="@string/year_low_title"/>
+
+            <TextView
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:id="@+id/year_low"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                tools:text="@string/day_low_placeholder"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</ScrollView>
