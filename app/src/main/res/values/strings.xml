@@ -44,9 +44,11 @@
     <string name="day_high_placeholder">123.27</string>
     <string name="day_low_title">Day Low:</string>
     <string name="day_low_placeholder">90.34</string>
-    <string name="yeat_high_title">Yeat High:</string>
+    <string name="year_high_title">Year High:</string>
     <string name="year_low_title">Year Low:</string>
     <string name="volume_title">Volume:</string>
-    <string name="detail_price_title">Price:</string>
+    <string name="detail_price_title">Current/Closing Price:</string>
+    <string name="detail_change_title">Change:</string>
+    <string name="change_percentage_title">Change %:</string>
 
 </resources>
