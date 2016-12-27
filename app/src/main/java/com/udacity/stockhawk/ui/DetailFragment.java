@@ -19,6 +19,8 @@ import com.udacity.stockhawk.R;
 public class DetailFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    private static final String LOG_TAG = DetailFragment.class.getSimpleName();
+    static final String DETAIL_URI = "URI";
 
     public DetailFragment() {
         // Required empty public constructor
@@ -67,7 +69,6 @@ public class DetailFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        public void onFragmentInteraction(Uri uri);
     }
 }
