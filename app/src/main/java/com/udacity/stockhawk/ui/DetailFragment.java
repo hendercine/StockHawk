@@ -13,12 +13,12 @@ import com.udacity.stockhawk.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link DetailFragment.OnFragmentInteractionListener} interface
+ * {@link OnStockSelectedListener} interface
  * to handle interaction events.
  */
 public class DetailFragment extends Fragment {
 
-    private OnFragmentInteractionListener mListener;
+    private OnStockSelectedListener mCallBack;
     private static final String LOG_TAG = DetailFragment.class.getSimpleName();
     static final String DETAIL_URI = "URI";
 
@@ -31,31 +31,31 @@ public class DetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        onButtonPressed(Uri.parse(DETAIL_URI));
         return inflater.inflate(R.layout.fragment_detail, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+        if (mCallBack != null) {
+            mCallBack.onStockSelected(uri);
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnStockSelectedListener) {
+            mCallBack = (OnStockSelectedListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnStockSelectedListener");
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        mCallBack = null;
     }
 
     /**
@@ -68,7 +68,7 @@ public class DetailFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
-        public void onFragmentInteraction(Uri uri);
+    public interface OnStockSelectedListener {
+        void onStockSelected(Uri uri);
     }
 }
