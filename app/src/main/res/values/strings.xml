@@ -50,5 +50,6 @@
     <string name="detail_price_title">Current/Closing Price:</string>
     <string name="detail_change_title">Change:</string>
     <string name="change_percentage_title">Change %:</string>
+    <string name="detail_activity_label">Details</string>
 
 </resources>

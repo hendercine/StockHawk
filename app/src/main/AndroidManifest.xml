@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.DetailActivity"
+            android:label="@string/detail_activity_label"
+            android:parentActivityName=".ui.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity" />
+        </activity>
 
         <service
             android:name=".sync.QuoteIntentService"
@@ -37,15 +45,6 @@
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-
-        <activity
-            android:name=".ui.DetailActivity"
-            android:label="DetailActivity"
-            android:parentActivityName=".ui.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.MainActivity" />
-        </activity>
 
     </application>
 
