@@ -17,7 +17,10 @@ import android.widget.TextView;
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 
-import static com.udacity.stockhawk.data.Contract.Quote.uri;
+import java.io.IOException;
+
+import yahoofinance.Stock;
+import yahoofinance.YahooFinance;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,13 +59,14 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         if (mCallBack != null) {
-            mCallBack.onStockSelected(uri);
+            mCallBack.onStockSelected(Uri.parse(DETAIL_URI));
         }
 
-//        Bundle args = getArguments();
-//        if (args != null) {
-//            mUri = args.getParcelable(DetailFragment.DETAIL_URI);
-//        }
+        Bundle args = getArguments();
+        if (args != null) {
+            mUri = args.getParcelable(DetailFragment.DETAIL_URI);
+        }
+
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
         mStockTitleView = (TextView) rootView.findViewById(R.id.detail_stock_title);
         mStockSymbolView = (TextView) rootView.findViewById(R.id.detail_stock_symbol);
@@ -119,21 +123,28 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data != null && data.moveToFirst()) {
-//            int stockId = data.getInt(Contract.Quote.POSITION_ID);
+//            int stockId = stock.getInt(Contract.Quote.POSITION_ID);
 
-//            String stockTitleText = data.getString(Integer.parseInt(Contract.Quote.COLUMN_SYMBOL));
-//            mStockTitleView.setText(stockTitleText);
+            Stock stockTitle = null;
+            try {
+                stockTitle = YahooFinance.get(String.valueOf(data));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            assert stockTitle != null;
+            String stockTitleText = stockTitle.getName();
+            mStockTitleView.setText(stockTitleText);
 
-            String stockSymbolText = data.getString(Integer.parseInt(Contract.Quote.COLUMN_SYMBOL));
+            String stockSymbolText = data.getString(Contract.Quote.POSITION_SYMBOL);
             mStockSymbolView.setText(stockSymbolText);
 
-            String stockPriceText = data.getString(Integer.parseInt(Contract.Quote.COLUMN_PRICE));
+            String stockPriceText = data.getString(Contract.Quote.POSITION_PRICE);
             mDetailPriceView.setText(stockPriceText);
 
-            String stockChangeText = data.getString(Integer.parseInt(Contract.Quote.COLUMN_ABSOLUTE_CHANGE));
+            String stockChangeText = data.getString(Contract.Quote.POSITION_ABSOLUTE_CHANGE);
             mDetailChangeView.setText(stockChangeText);
 
-            String stockChangePercentageText = data.getString(Integer.parseInt(Contract.Quote.COLUMN_PERCENTAGE_CHANGE));
+            String stockChangePercentageText = data.getString(Contract.Quote.POSITION_PERCENTAGE_CHANGE);
             mDetailChangePercentageView.setText(stockChangePercentageText);
         }
 

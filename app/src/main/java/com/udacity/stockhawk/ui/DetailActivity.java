@@ -18,6 +18,7 @@ public class DetailActivity extends AppCompatActivity implements DetailFragment.
         DetailFragment mDetailFragment = new DetailFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
+        mDetailFragment.setArguments(getIntent().getExtras());
         // Replace whatever is in the fragment_container view with this fragment,
         // and add the transaction to the back stack
         transaction.replace(R.id.activity_detail_container, mDetailFragment);
