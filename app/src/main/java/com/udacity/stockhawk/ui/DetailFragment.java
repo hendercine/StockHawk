@@ -19,6 +19,7 @@ import com.udacity.stockhawk.data.Contract;
 
 import java.io.IOException;
 
+import butterknife.BindView;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
@@ -34,12 +35,16 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
     private static final String LOG_TAG = DetailFragment.class.getSimpleName();
     static final String DETAIL_URI = "URI";
     private Uri mUri;
+    private StockAdapter adapter;
 
     private static final int DETAIL_LOADER = 0;
     String[] DETAIL_COLUMNS = Contract.Quote.QUOTE_COLUMNS;
 
+    @BindView(R.id.detail_stock_title)
     private TextView mStockTitleView;
+    @BindView(R.id.detail_stock_symbol)
     private TextView mStockSymbolView;
+    @BindView(R.id.volume)
     private TextView mVolumeView;
     private TextView mDetailPriceView;
     private TextView mDayHighView;
@@ -68,9 +73,6 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
         }
 
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
-        mStockTitleView = (TextView) rootView.findViewById(R.id.detail_stock_title);
-        mStockSymbolView = (TextView) rootView.findViewById(R.id.detail_stock_symbol);
-        mVolumeView = (TextView) rootView.findViewById(R.id.volume);
         mDetailPriceView = (TextView) rootView.findViewById(R.id.detail_price);
         mDayHighView = (TextView) rootView.findViewById(R.id.day_high);
         mDayLowView = (TextView) rootView.findViewById(R.id.day_low);
@@ -125,15 +127,15 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
         if (data != null && data.moveToFirst()) {
 //            int stockId = stock.getInt(Contract.Quote.POSITION_ID);
 
-            Stock stockTitle = null;
-            try {
-                stockTitle = YahooFinance.get(String.valueOf(data));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            assert stockTitle != null;
-            String stockTitleText = stockTitle.getName();
-            mStockTitleView.setText(stockTitleText);
+//            Stock stockTitle = null;
+//            try {
+//                stockTitle = YahooFinance.get(String.valueOf(data));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            assert stockTitle != null;
+//            String stockTitleText = stockTitle.getName();
+//            mStockTitleView.setText(stockTitleText);
 
             String stockSymbolText = data.getString(Contract.Quote.POSITION_SYMBOL);
             mStockSymbolView.setText(stockSymbolText);
