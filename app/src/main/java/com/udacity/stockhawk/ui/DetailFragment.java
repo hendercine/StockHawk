@@ -9,6 +9,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +18,11 @@ import android.widget.TextView;
 
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
-
-import java.io.IOException;
+import com.udacity.stockhawk.sync.QuoteSyncJob;
 
 import butterknife.BindView;
-import yahoofinance.Stock;
-import yahoofinance.YahooFinance;
+import butterknife.ButterKnife;
+import timber.log.Timber;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,30 +30,42 @@ import yahoofinance.YahooFinance;
  * {@link OnStockSelectedListener} interface
  * to handle interaction events.
  */
-public class DetailFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class DetailFragment extends Fragment implements LoaderManager
+        .LoaderCallbacks<Cursor>,
+        StockAdapter.StockAdapterOnClickHandler {
 
     private OnStockSelectedListener mCallBack;
     private static final String LOG_TAG = DetailFragment.class.getSimpleName();
     static final String DETAIL_URI = "URI";
     private Uri mUri;
     private StockAdapter adapter;
+    private StockAdapter.StockAdapterOnClickHandler clickHandler;
 
     private static final int DETAIL_LOADER = 0;
     String[] DETAIL_COLUMNS = Contract.Quote.QUOTE_COLUMNS;
 
+    @BindView(R.id.detail_recycler_view)
+    RecyclerView recyclerView;
     @BindView(R.id.detail_stock_title)
-    private TextView mStockTitleView;
+    TextView mStockTitleView;
     @BindView(R.id.detail_stock_symbol)
-    private TextView mStockSymbolView;
+    TextView mStockSymbolView;
     @BindView(R.id.volume)
-    private TextView mVolumeView;
-    private TextView mDetailPriceView;
-    private TextView mDayHighView;
-    private TextView mDayLowView;
-    private TextView mYearHighView;
-    private TextView mYearLowView;
-    private TextView mDetailChangeView;
-    private TextView mDetailChangePercentageView;
+    TextView mVolumeView;
+    @BindView(R.id.detail_price)
+    TextView mDetailPriceView;
+    @BindView(R.id.day_high)
+    TextView mDayHighView;
+    @BindView(R.id.day_low)
+    TextView mDayLowView;
+    @BindView(R.id.year_high)
+    TextView mYearHighView;
+    @BindView(R.id.year_low)
+    TextView mYearLowView;
+    @BindView(R.id.detail_change)
+    TextView mDetailChangeView;
+    @BindView(R.id.detail_change_percentage)
+    TextView mDetailChangePercentageView;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -73,13 +86,12 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
         }
 
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
-        mDetailPriceView = (TextView) rootView.findViewById(R.id.detail_price);
-        mDayHighView = (TextView) rootView.findViewById(R.id.day_high);
-        mDayLowView = (TextView) rootView.findViewById(R.id.day_low);
-        mYearHighView = (TextView) rootView.findViewById(R.id.year_high);
-        mYearLowView = (TextView) rootView.findViewById(R.id.year_low);
-        mDetailChangeView = (TextView) rootView.findViewById(R.id.detail_change);
-        mDetailChangePercentageView = (TextView) rootView.findViewById(R.id.detail_change_percentage);
+        ButterKnife.bind(rootView);
+
+        adapter = new StockAdapter(getContext(), clickHandler);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         return rootView;
     }
 
@@ -103,6 +115,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        QuoteSyncJob.initialize(getContext());
         getLoaderManager().initLoader(DETAIL_LOADER, null, this);
         super.onActivityCreated(savedInstanceState);
     }
@@ -137,6 +150,8 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
 //            String stockTitleText = stockTitle.getName();
 //            mStockTitleView.setText(stockTitleText);
 
+            QuoteSyncJob.syncImmediately(getContext());
+
             String stockSymbolText = data.getString(Contract.Quote.POSITION_SYMBOL);
             mStockSymbolView.setText(stockSymbolText);
 
@@ -155,6 +170,11 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
 
+    }
+
+    @Override
+    public void onClick(String symbol) {
+        Timber.d("Symbol clicked: %s", symbol);
     }
 
     /**
