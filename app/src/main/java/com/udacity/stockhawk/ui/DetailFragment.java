@@ -44,8 +44,8 @@ public class DetailFragment extends Fragment implements LoaderManager
     private static final int DETAIL_LOADER = 0;
     String[] DETAIL_COLUMNS = Contract.Quote.QUOTE_COLUMNS;
 
-    @BindView(R.id.detail_recycler_view)
-    RecyclerView recyclerView;
+    @BindView(R.id.detail_card_view)
+    RecyclerView mDetailRecyclerView;
     @BindView(R.id.detail_stock_title)
     TextView mStockTitleView;
     @BindView(R.id.detail_stock_symbol)
@@ -89,8 +89,8 @@ public class DetailFragment extends Fragment implements LoaderManager
         ButterKnife.bind(rootView);
 
         adapter = new StockAdapter(getContext(), clickHandler);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mDetailRecyclerView.setAdapter(adapter);
+        mDetailRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return rootView;
     }
