@@ -11,46 +11,47 @@
 
         <LinearLayout
             android:id="@+id/detail_fragment_container"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/detail_title_symbol_container"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
+                android:layout_weight="1"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginBottom="@dimen/activity_vertical_margin">
 
                 <TextView
                     android:id="@+id/detail_stock_title"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
                     tools:text="@string/detail_title_placeholder" />
 
                 <TextView
                     android:id="@+id/detail_stock_symbol"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
                     tools:text="@string/detail_symbol_placeholder" />
-            </LinearLayout>
+            </RelativeLayout>
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/chart"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/detail_title_symbol_container"
+                android:layout_height="0dp"
+                android:layout_weight="6"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
             <RelativeLayout
                 android:id="@+id/volume_price_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/chart"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginBottom="@dimen/activity_vertical_margin">
 
@@ -91,8 +92,8 @@
             <RelativeLayout
                 android:id="@+id/detail_high_low_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/volume_price_container"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginBottom="@dimen/activity_vertical_margin">
 
@@ -133,8 +134,8 @@
             <RelativeLayout
                 android:id="@+id/detail_year_high_low_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/detail_high_low_container"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginBottom="@dimen/activity_vertical_margin">
 
@@ -175,8 +176,8 @@
             <RelativeLayout
                 android:id="@+id/detail_change_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/detail_year_high_low_container"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginBottom="@dimen/activity_vertical_margin">
 

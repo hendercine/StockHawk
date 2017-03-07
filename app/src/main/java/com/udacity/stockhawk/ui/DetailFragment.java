@@ -38,7 +38,6 @@ public class DetailFragment extends Fragment implements LoaderManager
     private static final String LOG_TAG = DetailFragment.class.getSimpleName();
     static final String DETAIL_URI = "URI";
     private Uri mUri;
-    private StockAdapter adapter;
     private StockAdapter.StockAdapterOnClickHandler clickHandler;
 
     private static final int DETAIL_LOADER = 0;
@@ -87,10 +86,6 @@ public class DetailFragment extends Fragment implements LoaderManager
 
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
         ButterKnife.bind(rootView);
-
-        adapter = new StockAdapter(getContext(), clickHandler);
-        mDetailRecyclerView.setAdapter(adapter);
-        mDetailRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         return rootView;
     }
@@ -163,6 +158,10 @@ public class DetailFragment extends Fragment implements LoaderManager
 
             String stockChangePercentageText = data.getString(Contract.Quote.POSITION_PERCENTAGE_CHANGE);
             mDetailChangePercentageView.setText(stockChangePercentageText);
+
+            StockAdapter adapter = new StockAdapter(getContext(), clickHandler);
+            mDetailRecyclerView.setAdapter(adapter);
+            mDetailRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         }
 
     }
