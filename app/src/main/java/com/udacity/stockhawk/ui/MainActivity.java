@@ -141,10 +141,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new CursorLoader(this,
+        return new CursorLoader(
+                this,
                 Contract.Quote.uri,
                 Contract.Quote.QUOTE_COLUMNS,
-                null, null, Contract.Quote.COLUMN_SYMBOL);
+                null,
+                null,
+                Contract.Quote.COLUMN_SYMBOL
+        );
     }
 
     @Override

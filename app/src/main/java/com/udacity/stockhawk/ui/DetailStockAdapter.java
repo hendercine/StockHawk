@@ -56,7 +56,7 @@ class DetailStockAdapter extends RecyclerView.Adapter<DetailStockAdapter.DetailS
     @Override
     public DetailStockViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View item = LayoutInflater.from(context).inflate(R.layout.list_item_quote, parent, false);
+        View item = LayoutInflater.from(context).inflate(R.layout.fragment_detail, parent, false);
 
         return new DetailStockViewHolder(item);
     }
@@ -66,30 +66,13 @@ class DetailStockAdapter extends RecyclerView.Adapter<DetailStockAdapter.DetailS
 
         cursor.moveToPosition(position);
 
-
-        holder.symbol.setText(cursor.getString(Contract.Quote.POSITION_SYMBOL));
-        holder.price.setText(dollarFormat.format(cursor.getFloat(Contract.Quote.POSITION_PRICE)));
-
-
         float rawAbsoluteChange = cursor.getFloat(Contract.Quote.POSITION_ABSOLUTE_CHANGE);
         float percentageChange = cursor.getFloat(Contract.Quote.POSITION_PERCENTAGE_CHANGE);
 
-        if (rawAbsoluteChange > 0) {
-            holder.change.setBackgroundResource(R.drawable.percent_change_pill_green);
-        } else {
-            holder.change.setBackgroundResource(R.drawable.percent_change_pill_red);
-        }
-
-        String change = dollarFormatWithPlus.format(rawAbsoluteChange);
-        String percentage = percentageFormat.format(percentageChange / 100);
-
-        if (PrefUtils.getDisplayMode(context)
-                .equals(context.getString(R.string.pref_display_mode_absolute_key))) {
-            holder.change.setText(change);
-        } else {
-            holder.change.setText(percentage);
-        }
-
+        holder.mStockSymbolView.setText(cursor.getString(Contract.Quote.POSITION_SYMBOL));
+        holder.mDetailPrice.setText(dollarFormat.format(cursor.getFloat(Contract.Quote.POSITION_PRICE)));
+        holder.mDetailChangeView.setText((int) rawAbsoluteChange);
+        holder.mDetailChangePercentageView.setText((int) percentageChange);
 
     }
 
@@ -109,14 +92,26 @@ class DetailStockAdapter extends RecyclerView.Adapter<DetailStockAdapter.DetailS
 
     class DetailStockViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @BindView(R.id.symbol)
-        TextView symbol;
-
-        @BindView(R.id.price)
-        TextView price;
-
-        @BindView(R.id.change)
-        TextView change;
+        @BindView(R.id.detail_stock_title)
+        TextView mStockTitleView;
+        @BindView(R.id.detail_stock_symbol)
+        TextView mStockSymbolView;
+        @BindView(R.id.volume)
+        TextView mVolumeView;
+        @BindView(R.id.detail_price)
+        TextView mDetailPrice;
+        @BindView(R.id.day_high)
+        TextView mDayHighView;
+        @BindView(R.id.day_low)
+        TextView mDayLowView;
+        @BindView(R.id.year_high)
+        TextView mYearHighView;
+        @BindView(R.id.year_low)
+        TextView mYearLowView;
+        @BindView(R.id.detail_change)
+        TextView mDetailChangeView;
+        @BindView(R.id.detail_change_percentage)
+        TextView mDetailChangePercentageView;
 
         DetailStockViewHolder(View itemView) {
             super(itemView);

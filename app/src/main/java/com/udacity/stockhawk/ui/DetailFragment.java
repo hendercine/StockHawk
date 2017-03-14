@@ -24,6 +24,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import timber.log.Timber;
 
+import static android.R.attr.data;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -32,19 +34,22 @@ import timber.log.Timber;
  */
 public class DetailFragment extends Fragment implements LoaderManager
         .LoaderCallbacks<Cursor>,
-        StockAdapter.StockAdapterOnClickHandler {
+        DetailStockAdapter.DetailStockAdapterOnClickHandler {
 
+    private static final int STOCK_LOADER = 0;
     private OnStockSelectedListener mCallBack;
     private static final String LOG_TAG = DetailFragment.class.getSimpleName();
     static final String DETAIL_URI = "URI";
     private Uri mUri;
-    private StockAdapter.StockAdapterOnClickHandler clickHandler;
+    private Cursor cursor;
+//    private DetailStockAdapter.DetailStockAdapterOnClickHandler clickHandler = null;
+//    DetailStockAdapter adapter = new DetailStockAdapter(getContext(), clickHandler);
 
     private static final int DETAIL_LOADER = 0;
     String[] DETAIL_COLUMNS = Contract.Quote.QUOTE_COLUMNS;
 
-    @BindView(R.id.detail_card_view)
-    RecyclerView mDetailRecyclerView;
+//    @BindView(R.id.detail_card_view)
+//    RecyclerView mDetailRecyclerView;
     @BindView(R.id.detail_stock_title)
     TextView mStockTitleView;
     @BindView(R.id.detail_stock_symbol)
@@ -52,7 +57,7 @@ public class DetailFragment extends Fragment implements LoaderManager
     @BindView(R.id.volume)
     TextView mVolumeView;
     @BindView(R.id.detail_price)
-    TextView mDetailPriceView;
+    TextView mDetailPrice;
     @BindView(R.id.day_high)
     TextView mDayHighView;
     @BindView(R.id.day_low)
@@ -84,8 +89,26 @@ public class DetailFragment extends Fragment implements LoaderManager
             mUri = args.getParcelable(DetailFragment.DETAIL_URI);
         }
 
+//        mDetailRecyclerView.setAdapter(adapter);
+//        mDetailRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
         ButterKnife.bind(rootView);
+
+//        QuoteSyncJob.initialize(getContext());
+//        getLoaderManager().initLoader(STOCK_LOADER, null, this);
+//
+//        String stockSymbolText = Contract.Quote.COLUMN_SYMBOL;
+//        mStockSymbolView.setText(stockSymbolText);
+//
+//        String stockPriceText = Contract.Quote.COLUMN_PRICE;
+//        mDetailPrice.setText(stockPriceText);
+//
+//        String stockChangeText = Contract.Quote.COLUMN_ABSOLUTE_CHANGE;
+//        mDetailChangeView.setText(stockChangeText);
+//
+//        String stockChangePercentageText = Contract.Quote.COLUMN_PERCENTAGE_CHANGE;
+//        mDetailChangePercentageView.setText(stockChangePercentageText);
 
         return rootView;
     }
@@ -124,17 +147,22 @@ public class DetailFragment extends Fragment implements LoaderManager
                     DETAIL_COLUMNS,
                     null,
                     null,
-                    null
+                    Contract.Quote.COLUMN_SYMBOL
             );
         }
         return null;
+    }
+
+    void setCursor(Cursor cursor) {
+        this.cursor = cursor;
+        notify();
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         if (data != null && data.moveToFirst()) {
 //            int stockId = stock.getInt(Contract.Quote.POSITION_ID);
-
+//
 //            Stock stockTitle = null;
 //            try {
 //                stockTitle = YahooFinance.get(String.valueOf(data));
@@ -147,27 +175,25 @@ public class DetailFragment extends Fragment implements LoaderManager
 
             QuoteSyncJob.syncImmediately(getContext());
 
-            String stockSymbolText = data.getString(Contract.Quote.POSITION_SYMBOL);
-            mStockSymbolView.setText(stockSymbolText);
-
-            String stockPriceText = data.getString(Contract.Quote.POSITION_PRICE);
-            mDetailPriceView.setText(stockPriceText);
-
-            String stockChangeText = data.getString(Contract.Quote.POSITION_ABSOLUTE_CHANGE);
-            mDetailChangeView.setText(stockChangeText);
-
-            String stockChangePercentageText = data.getString(Contract.Quote.POSITION_PERCENTAGE_CHANGE);
-            mDetailChangePercentageView.setText(stockChangePercentageText);
-
-            StockAdapter adapter = new StockAdapter(getContext(), clickHandler);
-            mDetailRecyclerView.setAdapter(adapter);
-            mDetailRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//            String stockSymbolText = data.getString(Contract.Quote.POSITION_SYMBOL);
+//            mStockSymbolView.setText(stockSymbolText);
+//
+//            String stockPriceText = data.getString(Contract.Quote.POSITION_PRICE);
+//            mDetailPrice.setText(stockPriceText);
+//
+//            String stockChangeText = data.getString(Contract.Quote.POSITION_ABSOLUTE_CHANGE);
+//            mDetailChangeView.setText(stockChangeText);
+//
+//            String stockChangePercentageText = data.getString(Contract.Quote.POSITION_PERCENTAGE_CHANGE);
+//            mDetailChangePercentageView.setText(stockChangePercentageText);
         }
 
+        setCursor(data);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
+        setCursor(null);
 
     }
 
