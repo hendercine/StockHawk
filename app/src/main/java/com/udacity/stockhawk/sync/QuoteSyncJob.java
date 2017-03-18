@@ -9,12 +9,9 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Handler;
-import android.support.design.widget.TabLayout;
 import android.widget.Toast;
 
 import com.udacity.stockhawk.R;
-import com.udacity.stockhawk.data.Contract;
-import com.udacity.stockhawk.data.PrefUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;

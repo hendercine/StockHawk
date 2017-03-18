@@ -2,42 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:layout_height="72dp"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingStart="16dp"
-    android:paddingEnd="16dp">
-
+    android:paddingEnd="16dp"
+    >
     <TextView
-        android:id="@+id/symbol"
+        android:id="@+id/stock_symbol"
         style="@style/StockSymbolTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="start|center_vertical"
-        tools:text="@string/symbol_ph_text" />
-
+        android:gravity="left|center_vertical"
+        tools:text="GOOG"
+        android:textColor="#fefefe"
+        android:textStyle="bold" />
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="end">
-
+        android:gravity="right"
+        >
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/bid_price"
             style="@style/BidPriceTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10sp"
-            tools:text="@string/price_ph_text" />
-
+            android:paddingEnd="10sp"
+            android:paddingStart="10sp"
+            tools:text="1000.00"
+            android:textColor="#ffffff" />
         <TextView
             android:id="@+id/change"
+            android:background="@drawable/percent_change_pill"
             style="@style/PercentChangeTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/percent_change_pill_green"
-            android:paddingStart="3dp"
             android:paddingEnd="3dp"
-            tools:text="@string/change_ph_text" />
+            android:paddingStart="3dp"
+            tools:text="100%"
+            />
     </LinearLayout>
 </LinearLayout>

@@ -23,28 +23,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.DetailActivity"
-            android:label="@string/detail_activity_label"
+            android:name=".ui.StockDetails"
+            android:label="@string/details_title"
             android:parentActivityName=".ui.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.MainActivity" />
         </activity>
 
-        <service
-            android:name=".sync.QuoteIntentService"
-            android:exported="false" />
+        <!--<provider-->
+            <!--android:name=".data.StockProvider"-->
+            <!--android:authorities="com.udacity.stockhawk"-->
+            <!--android:exported="false" />-->
 
         <provider
-            android:name=".data.StockProvider"
+            android:name=".data.QuoteProvider"
             android:authorities="com.udacity.stockhawk"
             android:exported="false" />
 
-        <service
-            android:name=".sync.QuoteJobService"
-            android:enabled="true"
-            android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service android:name=".sync.StockIntentService" />
+        <service android:name=".sync.StockTaskService" />
 
     </application>
 
