@@ -56,6 +56,8 @@ public class StockTaskService extends GcmTaskService {
     private StringBuilder mStoredSymbols = new StringBuilder();
     private boolean isUpdate;
 
+    public StockTaskService(){}
+
     public StockTaskService(Context context){
         mContext = context;
     }
@@ -166,8 +168,6 @@ public class StockTaskService extends GcmTaskService {
 
                     }
 
-                    //mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY,
-                    //Utilities.quoteJsonToContentVals(getResponse));
                 }catch (RemoteException | OperationApplicationException e){
                     Log.e(LOG_TAG, "Error applying batch insert", e);
                     setStockStatus(mContext, STATUS_ERROR_JSON);

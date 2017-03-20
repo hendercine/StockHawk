@@ -15,8 +15,10 @@ public class StockIntentService extends IntentService {
     /**
      * Creates an IntentService.  Invoked by your subclass's constructor.
      *
-     * @param name Used to name the worker thread, important only for debugging.
      */
+    public StockIntentService(){
+        super(StockIntentService.class.getName());
+    }
     public StockIntentService(String name) {
         super(name);
     }

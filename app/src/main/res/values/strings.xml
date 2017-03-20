@@ -8,6 +8,7 @@
     <string name="symbol_search" translatable="true">Symbol Search</string>
     <string name="content_test" translatable="true">Search for a Stock Symbol</string>
     <string name="input_hint" translatable="false">FB / GOOG / MSFT</string>
+    <string name="input_prefill" translatable="false"> </string>
     <string name="network_toast" translatable="true">Uh-oh! This app requires an internet connection</string>
     <string name="stockStatus" translatable="false">StockStatus</string>
     <string name="dataNoAvailable" translatable="true">Stocks data is not available at this moment</string>
@@ -32,5 +33,9 @@
     <string name="widget_title" translatable="true">The Market Today</string>
     <string name="one_year_data" translatable="true">1 Year Stock Chart</string>
     <string name="details_title">Detail View</string>
+    <string name="default_stocks_apple">AAPL</string>
+    <string name="default_stocks_yahoo">YHOO</string>
+    <string name="default_stocks_microsoft">MSFT</string>
+    <string name="default_stocks_facebook">FB</string>
 
 </resources>

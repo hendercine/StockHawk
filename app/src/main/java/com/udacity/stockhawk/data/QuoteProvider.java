@@ -13,7 +13,7 @@ import net.simonvt.schematic.annotation.TableEndpoint;
 
 @ContentProvider(authority = QuoteProvider.AUTHORITY, database = QuoteDb.class)
 public class QuoteProvider {
-    public static final String AUTHORITY = "com.sam_chordas.android.stockhawk.data.QuoteProvider";
+    public static final String AUTHORITY = "com.udacity.stockhawk.data.QuoteProvider";
 
     static final Uri BASE_CONTENT_URI = Uri.parse("content://" + AUTHORITY);
 

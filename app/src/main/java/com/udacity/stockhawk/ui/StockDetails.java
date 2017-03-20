@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.db.chart.model.LineSet;
 import com.db.chart.view.AxisController;
 import com.db.chart.view.LineChartView;
+import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.QuoteColumns;
 
 import org.json.JSONArray;
