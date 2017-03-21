@@ -1,0 +1,61 @@
+{
+  "project_info": {
+    "project_number": "939090658757",
+    "firebase_url": "https://stockhawk-157204.firebaseio.com",
+    "project_id": "stockhawk-157204",
+    "storage_bucket": "stockhawk-157204.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939090658757:android:9808a16399a49d6e",
+        "android_client_info": {
+          "package_name": "com.udacity.stockhawk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939090658757-idtu8lcje4jh8td7kdgvgb6mm7pp0tnv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.udacity.stockhawk",
+            "certificate_hash": "1dc0bcb4cc415917ede2aa331b349256ea0c79ef"
+          }
+        },
+        {
+          "client_id": "939090658757-f9pob35563t2727tcnq5he886ikskn7e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBItwUyTiXs2P5UQlbLv-SDC2trw-d60TY"
+        },
+        {
+          "current_key": "AIzaSyBpNQOiEaiNAjiGfivtHz1yu1mN1r9B3_k"
+        },
+        {
+          "current_key": "AIzaSyBQrrvrlfECB3Raw-Z9W905O0rlGYzPYvs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939090658757-f9pob35563t2727tcnq5he886ikskn7e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
