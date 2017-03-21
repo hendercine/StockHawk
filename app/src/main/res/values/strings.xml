@@ -37,5 +37,6 @@
     <string name="default_stocks_yahoo">YHOO</string>
     <string name="default_stocks_microsoft">MSFT</string>
     <string name="default_stocks_facebook">FB</string>
+    <string name="click_button_to_add_stocks">Click Button to add Stocks</string>
 
 </resources>

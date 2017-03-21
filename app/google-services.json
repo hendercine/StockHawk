@@ -19,7 +19,7 @@
           "client_type": 1,
           "android_info": {
             "package_name": "com.udacity.stockhawk",
-            "certificate_hash": "1DC0BCB4CC415917EDE2AA331B349256EA0C79EF"
+            "certificate_hash": "1dc0bcb4cc415917ede2aa331b349256ea0c79ef"
           }
         },
         {
@@ -30,6 +30,12 @@
       "api_key": [
         {
           "current_key": "AIzaSyBItwUyTiXs2P5UQlbLv-SDC2trw-d60TY"
+        },
+        {
+          "current_key": "AIzaSyBpNQOiEaiNAjiGfivtHz1yu1mN1r9B3_k"
+        },
+        {
+          "current_key": "AIzaSyBQrrvrlfECB3Raw-Z9W905O0rlGYzPYvs"
         }
       ],
       "services": {

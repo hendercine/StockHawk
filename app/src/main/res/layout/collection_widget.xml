@@ -26,14 +26,11 @@
             android:layout_height="match_parent"
             android:id="@+id/appwidget_lv"
             android:background="@color/md_divider_white"
-            tools:listitem = "@layout/widget_item"
+            tools:listitem="@layout/widget_item"
             android:contentDescription="@string/lv_stock_widget"
-            android:textStyle="italic">
-
-        </ListView>
+            android:textStyle="italic" />
 
     </LinearLayout>
-
 
 
 </FrameLayout>
