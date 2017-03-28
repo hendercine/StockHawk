@@ -24,9 +24,9 @@ public class Utilities {
 
     public static ArrayList<ContentProviderOperation> quoteJsonToContentVals(String JSON)throws JSONException {
         ArrayList<ContentProviderOperation> batchOperations = new ArrayList<>();
-        JSONObject jsonObject = null;
-        JSONArray resultsArray = null;
-        ContentProviderOperation cpo = null;//new line
+        JSONObject jsonObject;
+        JSONArray resultsArray;
+        ContentProviderOperation cpo;
 
         try{
             jsonObject = new JSONObject(JSON);
@@ -36,11 +36,10 @@ public class Utilities {
                 if (count == 1){
                     jsonObject = jsonObject.getJSONObject("results")
                             .getJSONObject("quote");
-                    cpo = buildBatchOperation(jsonObject); //new line
+                    cpo = buildBatchOperation(jsonObject);
                     if (cpo != null){
-                        batchOperations.add(cpo);// este if tb es new sbr
+                        batchOperations.add(cpo);
                     }
-                    //batchOperations.add(buildBatchOperation(jsonObject));
 
                 } else{
                     resultsArray = jsonObject.getJSONObject("results").getJSONArray("quote");
@@ -48,8 +47,7 @@ public class Utilities {
                     if (resultsArray != null && resultsArray.length() != 0){
                         for (int i = 0; i < resultsArray.length(); i++){
                             jsonObject = resultsArray.getJSONObject(i);
-                            cpo = buildBatchOperation(jsonObject); //new line
-                            //batchOperations.add(buildBatchOperation(jsonObject));
+                            cpo = buildBatchOperation(jsonObject);
                             if (cpo != null){
                                 batchOperations.add(cpo);
                             }

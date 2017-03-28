@@ -38,9 +38,6 @@ import com.udacity.stockhawk.widget.CollectionWidget;
 
 public class MainActivity extends AppCompatActivity implements android.app.LoaderManager.LoaderCallbacks<Cursor>{
 
-    /**
-     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-     */
     private CharSequence mTitle;
     private Intent mServiceIntent;
     private static final int CURSOR_LOADER_ID = 0;
@@ -50,8 +47,6 @@ public class MainActivity extends AppCompatActivity implements android.app.Loade
     boolean isConnected;
 
     public String userText;
-    //public static int stockStatus;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements android.app.Loade
             mServiceIntent.putExtra("tag", "init");
             if (isConnected){
                 startService(mServiceIntent);
-                //Toast.makeText(mContext, getString(R.string.statusOK), Toast.LENGTH_SHORT).show();
 
             } else{
                 networkToast();
@@ -128,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements android.app.Loade
 
                                     if (c.getCount() != 0) {
                                         Toast toast =
-                                                Toast.makeText(MainActivity.this, "This stock is already saved!",
+                                                Toast.makeText(MainActivity.this, R.string.stock_already_saved,
                                                         Toast.LENGTH_SHORT);
                                         toast.setGravity(Gravity.CENTER, Gravity.CENTER, 0);
                                         toast.show();

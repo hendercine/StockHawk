@@ -80,7 +80,6 @@ public class StockTaskService extends GcmTaskService {
         try{
             // Base URL for the Yahoo query
             urlStringBuilder.append("https://query.yahooapis.com/v1/public/yql?q=");
-            //urlStringBuilder.append("https://que.yahooapis.com/v1/public/yql?q=");
             urlStringBuilder.append(URLEncoder.encode("select * from yahoo.finance.quotes where symbol "
                     + "in (", "UTF-8"));
         } catch (UnsupportedEncodingException e) {
@@ -163,7 +162,7 @@ public class StockTaskService extends GcmTaskService {
                         //The stock doesn't exist.
 
                         Intent intent = new Intent();
-                        intent.setAction("com.sam_chordas.android.stockhawk.ui.MyStocksActivity.STOCK_NOT_FOUND");
+                        intent.setAction("com.udacity.stockhawk.ui.MainActivity.STOCK_NOT_FOUND");
                         mContext.sendBroadcast(intent);
 
                     }

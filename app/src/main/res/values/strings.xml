@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Stock Hawk</string>
+    <string name="app_name" translatable="false">Stock Hawk</string>
 
     <string name="action_example" translatable="false">Example action</string>
 
@@ -38,5 +38,7 @@
     <string name="default_stocks_microsoft">MSFT</string>
     <string name="default_stocks_facebook">FB</string>
     <string name="click_button_to_add_stocks">Click Button to add Stocks</string>
+    <string name="stock_already_saved">This stock is already saved!</string>
+    <string name="one_year_stock_chart">One Year Stock Chart</string>
 
 </resources>
