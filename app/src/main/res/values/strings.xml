@@ -14,7 +14,7 @@
     <string name="dataNoAvailable" translatable="true">Stocks data is not available at this moment</string>
     <string name="statusOK" translatable="true">You can add new stocks by clicking the add button</string>
     <string name="statusNoNetwork" translatable="true">You need to connect to internet</string>
-    <string name="ErrorJson" translatable="true">Internal Error ocurred!</string>
+    <string name="ErrorJson" translatable="true">Internal Error occurred!</string>
     <string name="ServerDown" translatable="true">No stock information available. The server is not returning data!!</string>
     <string name="ErrorServer" translatable="true">No stock information available. The server is not returning valid data. Please check for an updated version of the App!</string>
     <string name="StatusUnknown" translatable="true">The problem cannot be identified. Try again later</string>

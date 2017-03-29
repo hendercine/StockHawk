@@ -73,7 +73,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/stockName"
-                            android:paddingStart="10sp"
+                            android:paddingStart="@dimen/default_padding"
+                            android:paddingEnd="@dimen/default_padding"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="1dp"
@@ -93,7 +94,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/stockSymbol"
-                            android:paddingStart="10sp"
+                            android:paddingStart="@dimen/default_padding"
+                            android:paddingEnd="@dimen/default_padding"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="1dp"
@@ -112,7 +114,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/stockCurrency"
-                            android:paddingStart="10sp"
+                            android:paddingStart="@dimen/default_padding"
+                            android:paddingEnd="@dimen/default_padding"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="1dp"
@@ -131,7 +134,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/stockDayLow"
-                            android:paddingStart="10sp"
+                            android:paddingStart="@dimen/default_padding"
+                            android:paddingEnd="@dimen/default_padding"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="1dp"
@@ -151,7 +155,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/stockDayHigh"
-                            android:paddingStart="10sp"
+                            android:paddingStart="@dimen/default_padding"
+                            android:paddingEnd="@dimen/default_padding"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="1dp"
@@ -171,7 +176,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/stockYearHigh"
-                            android:paddingStart="10sp"
+                            android:paddingStart="@dimen/default_padding"
+                            android:paddingEnd="@dimen/default_padding"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="1dp"
@@ -191,7 +197,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/stockYearMin"
-                            android:paddingStart="10sp"
+                            android:paddingStart="@dimen/default_padding"
+                            android:paddingEnd="@dimen/default_padding"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="1dp"
@@ -211,7 +218,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/EarningShare"
-                            android:paddingStart="10sp"
+                            android:paddingStart="@dimen/default_padding"
+                            android:paddingEnd="@dimen/default_padding"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="1dp"

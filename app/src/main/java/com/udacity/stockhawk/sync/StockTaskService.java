@@ -41,7 +41,7 @@ public class StockTaskService extends GcmTaskService {
     //Annotations to check the state of things
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({STATUS_OK,STATUS_SERVER_ERROR, STATUS_ERROR_JSON,
-            STATUS_UNKNOWN, STATUS_SERVER_DOWN})
+            STATUS_UNKNOWN, STATUS_SERVER_DOWN, STOCK_NOT_FOUND})
     public @interface StockStatus{
     }
 
@@ -50,6 +50,7 @@ public class StockTaskService extends GcmTaskService {
     public static final int STATUS_ERROR_JSON = 2;
     public static final int STATUS_UNKNOWN = 3;
     public static final int STATUS_SERVER_DOWN = 4;
+    public static final int STOCK_NOT_FOUND = 5;
 
     private OkHttpClient client = new OkHttpClient();
     private Context mContext;
@@ -160,10 +161,7 @@ public class StockTaskService extends GcmTaskService {
                                 batchOperations);
                     } else {
                         //The stock doesn't exist.
-
-                        Intent intent = new Intent();
-                        intent.setAction("com.udacity.stockhawk.ui.MainActivity.STOCK_NOT_FOUND");
-                        mContext.sendBroadcast(intent);
+                        setStockStatus(mContext, STOCK_NOT_FOUND);
 
                     }
 
