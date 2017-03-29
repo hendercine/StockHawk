@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/one_year_data"
                 android:textStyle="bold"
-                android:textSize="@dimen/md_title_textsize"
+                android:textSize="@dimen/med_title_textsize"
                 android:layout_gravity="top|center"
                 android:contentDescription="@string/one_year_stock_chart"
                 android:gravity="center_horizontal"
@@ -73,7 +73,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/stockName"
-                            android:paddingStart="10sp"
+                            android:paddingStart="@dimen/default_padding"
+                            android:paddingEnd="@dimen/default_padding"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="1dp"
