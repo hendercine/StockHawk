@@ -22,7 +22,7 @@
   </style>
 
   <style name="Stock" parent="AppTheme" >
-    <item name="android:colorBackground">@color/background_material_dark</item>
+    <item name="android:colorBackground">@color/background_material_drk</item>
   </style>
 
 </resources>

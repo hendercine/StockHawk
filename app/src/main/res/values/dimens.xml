@@ -5,6 +5,7 @@
     <dimen name="default_padding">8dp</dimen>
 
     <dimen name="med_title_textsize">20sp</dimen>
+    <dimen name="list_item_padding_horizontal_material">@dimen/abc_action_bar_content_inset_material</dimen>
 
     <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html -->
