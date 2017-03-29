@@ -6,8 +6,8 @@
   <color name="material_green_700">#00C853</color>
   <color name="accent_pink">#F50057</color>
   <color name="accent_pink_clear">#FF4081</color>
-  <color name="background_material_dark"
+  <color name="background_material_drk"
       tools:override="true">#1A237E</color>
-  <color name="accent_material_dark"
+  <color name="accent_material_drk"
       tools:override="true">#f50057</color>
 </resources>
