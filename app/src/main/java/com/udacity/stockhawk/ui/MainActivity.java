@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements android.app.Loade
                 activeNetwork.isConnectedOrConnecting();
         setContentView(R.layout.activity_main);
 
-
         // The intent service is for executing immediate pulls from the Yahoo API
         // GCMTaskService can only schedule tasks, they cannot execute immediately
         mServiceIntent = new Intent(this, StockIntentService.class);
@@ -99,15 +98,15 @@ public class MainActivity extends AppCompatActivity implements android.app.Loade
                 }));
         recyclerView.setAdapter(mCursorAdapter);
 
-
         com.melnykov.fab.FloatingActionButton fab = (com.melnykov.fab.FloatingActionButton) findViewById(R.id.fab);
         fab.attachToRecyclerView(recyclerView);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 if (isConnected){
-                    new MaterialDialog.Builder(mContext).title(R.string.symbol_search)
+                    new MaterialDialog.Builder(mContext)
+                            .title(R.string.symbol_search)
                             .content(R.string.content_test)
-                            .inputType(InputType.TYPE_CLASS_TEXT)
+                            .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS)
                             .input(R.string.input_hint, R.string.input_prefill, new MaterialDialog.InputCallback() {
                                 @Override public void onInput(MaterialDialog dialog, CharSequence input) {
                                     // On FAB click, receive user input. Make sure the stock doesn't already exist
@@ -126,12 +125,13 @@ public class MainActivity extends AppCompatActivity implements android.app.Loade
                                                         Toast.LENGTH_SHORT);
                                         toast.setGravity(Gravity.CENTER, Gravity.CENTER, 0);
                                         toast.show();
-                                        return;
+                                        c.close();
                                     } else {
                                         // Add the stock to DB
                                         mServiceIntent.putExtra("tag", "add");
                                         mServiceIntent.putExtra("symbol", input.toString());
                                         startService(mServiceIntent);
+                                        c.close();
                                     }
                                 }
                             })

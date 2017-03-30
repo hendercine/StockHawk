@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * StockHawk created by hendercine on 3/14/17.
@@ -62,7 +63,7 @@ public class Utilities {
     }
 
     public static String truncateBidPrice(String bidPrice){
-        bidPrice = String.format("%.2f", Float.parseFloat(bidPrice));
+        bidPrice = String.format(Locale.US, "%.2f", Float.parseFloat(bidPrice));
         return bidPrice;
     }
 
@@ -75,7 +76,7 @@ public class Utilities {
         }
         change = change.substring(1, change.length());
         double round = (double) Math.round(Double.parseDouble(change) * 100) / 100;
-        change = String.format("%.2f", round);
+        change = String.format(Locale.US, "%.2f", round);
         StringBuilder changeBuffer = new StringBuilder(change);
         changeBuffer.insert(0, weight);
         changeBuffer.append(ampersand);
