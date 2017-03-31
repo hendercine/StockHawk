@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements android.app.Loade
         @StockTaskService.StockStatus int stockStatus = prefs.getInt(mContext.getString(R.string.stockStatus),-1);
 
 
-        switch (stockStatus){
+        switch (stockStatus) {
 
             case StockTaskService.STATUS_OK:
                 userText = getString(R.string.statusOK);
@@ -225,6 +225,10 @@ public class MainActivity extends AppCompatActivity implements android.app.Loade
                 userText = getString(R.string.StatusUnknown);
 
                 break;
+            case StockTaskService.STOCK_NOT_FOUND:
+
+                break;
+
             default:
                 userText = getString(R.string.statusNoNetwork);
                 break;
